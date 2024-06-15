@@ -1,274 +1,304 @@
-<!DOCTYPE html><html><head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>TP WEB</title>
-  <link rel="shortcut icon" type="image/x-icon" href="images/TATA-PLAY-Denver.jpg">
-  <meta property="og:title" content="TP Web">
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ACM Network</title>
+    <link rel="shortcut icon" type="image/x-icon" href="images/TATA-PLAY-Denver.jpg">
+    <meta property="og:title" content="TP Web">
     <meta property="og:description" content="Watch TP All Channel 7D Catch-UP on Web ( No Subscription, No Ads ).">
     <meta property="og:image" content="images/TATA-PLAY-Denver.jpg">
     <meta property="og:url" content="t.me/+c0ReqHO-2sA1NTU1">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/searchbox.css">
     <link rel="stylesheet" href="css/channels.css">
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/contact.css">
     <link rel="stylesheet" href="css/tools.css">
-    <!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">      
+    <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/theme.css">
-    	
-  <script src="js/sh.js"></script>
-  <style>body {background:black;}</style>  
-  <script src="js/iconify.min.js"></script>
-  <script src="js/lazysizes.min.js"></script>
-  <script src="js/jquery-3.2.1.slim.min.js" crossorigin="anonymous"></script>
-  <script src="js/popper.min.js" crossorigin="anonymous"></script>
-  <script src="js/bootstrap.min.js" crossorigin="anonymous"></script>
-  <script src="js/jquery.min.js"></script> 
-
+    <script src="js/sh.js"></script>
+    <style>body {background:black;}</style>
+    <script src="js/iconify.min.js"></script>
+    <script src="js/lazysizes.min.js"></script>
+    <script src="js/jquery-3.2.1.slim.min.js" crossorigin="anonymous"></script>
+    <script src="js/popper.min.js" crossorigin="anonymous"></script>
+    <script src="js/bootstrap.min.js" crossorigin="anonymous"></script>
+    <script src="js/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.plyr.io/3.6.8/plyr.css">
 </head>
 <body>
 
 <div class="header">
-            <div class="brand"><span><h3>Denver</h3>Â&nbsp;<strong style="font-size: 13px; color: red;">  is  </strong><strong style="font-size: 20px; color: red;">Alive</strong>
-</span>
-                <a id="" menu"="" href="#"> <img id="menuimg" src="images/menu.png"> </a> </div>
-           <div class="links" id="drop">
-           	
-                    <a href="#" class="btn text-light">Home Page</a>
-		   <a href="/TP/catchup.html" class="btn text-light">Catch-UP</a>
+    <div class="brand">
+        <span><h3>Denver</h3>&nbsp;<strong style="font-size: 13px; color: red;">  is  </strong><strong style="font-size: 20px; color: red;">Alive</strong></span>
+        <a id="" menu"="" href="#"> <img id="menuimg" src="images/menu.png"> </a>
+    </div>
+    <div class="links" id="drop">
+        <a href="#" class="btn text-light">Home Page</a>
+        <a href="/TP/catchup.html" class="btn text-light">Catch-UP</a>
+        <a href="https://t.me/denver_iptv" target="_blank" class="btn text-light">Contact</a>
+        <a href="/TP/Copyright.html" target="_blank" class="btn text-light">Copyright</a>
+        <button id="dark-mode-button">
+            <label class="switch" id="drop">
+                <input type="checkbox" onclick="toggleDarkMode()">
+                <span class="slider">
+                    <span class="icon bulb" id="icon"></span>
+                </span>
+            </label>
+        </button>
+        <script>
+            function toggleDarkMode() {
+                var body = document.body;
+                body.classList.toggle("dark-mode");
 
-<a href="https://t.me/denver_iptv" target="_blank" class="btn text-light">Contact</a>
-
-<a href="/TP/Copyright.html" target="_blank" class="btn text-light">Copyright</a>
-                    
-                    <button id="dark-mode-button">
-        <label class="switch" id="drop">
-            <input type="checkbox" onclick="toggleDarkMode()">
-            <span class="slider">
-                <span class="icon bulb" id="icon"></span>
-            </span>
-        </label>
-    </button>
-
-    <script>
-        function toggleDarkMode() {
-            var body = document.body;
-            body.classList.toggle("dark-mode");
-
-            var icon = document.getElementById("icon");
-            if (body.classList.contains("dark-mode")) {
-                icon.classList.remove("bulb");
-                icon.classList.add("moon");
-            } else {
-                icon.classList.remove("moon");
-                icon.classList.add("bulb");
+                var icon = document.getElementById("icon");
+                if (body.classList.contains("dark-mode")) {
+                    icon.classList.remove("bulb");
+                    icon.classList.add("moon");
+                } else {
+                    icon.classList.remove("moon");
+                    icon.classList.add("bulb");
+                }
             }
-        }
 
-        // Ensure the initial icon state matches the current mode
-        document.addEventListener('DOMContentLoaded', (event) => {
-            var icon = document.getElementById("icon");
-            if (document.body.classList.contains("dark-mode")) {
-                icon.classList.add("moon");
-            } else {
-                icon.classList.add("bulb");
-            }
-        });
-    </script>
-
-</div>
+            // Ensure the initial icon state matches the current mode
+            document.addEventListener('DOMContentLoaded', (event) => {
+                var icon = document.getElementById("icon");
+                if (document.body.classList.contains("dark-mode")) {
+                    icon.classList.add("moon");
+                } else {
+                    icon.classList.add("bulb");
+                }
+            });
+        </script>
+    </div>
 </div>
 
-        <nav>
-  <select id="channel-dropdown" onchange="changeChannelGroup()">
-  	<option value="All">All</option>
-<option value="Entertainment">Entertainment</option>
-<option value="Movies">Movies</option>
-<option value="Sports">Sports</option>
-<option value="Music">Music</option>
-<option value="News">News</option>
-<option value="English News">English News</option>  
-<option value="Kids">Kids</option>
-<option value="Knowledge">Knowledge</option>
-<option value="Lifestyle">Lifestyle</option>
-<option value="Bengali">Bengali</option>
-<option value="Gujarati">Gujarati</option>
-<option value="Hindi">Hindi</option>
-<option value="Kannada">Kannada</option>
-<option value="Malayalam">Malayalam</option>
-<option value="Marathi">Marathi</option>
-<option value="Odia">Odia</option>
-<option value="Others">Others</option>
-<option value="Punjabi">Punjabi</option>
-<option value="Tamil">Tamil</option>
-<option value="Telugu">Telugu</option>
-<option value="shopping">shopping</option>
-<option value="Spiritual">Spiritual</option>
-<option value="Null">Null</option>
-<option value="Uncategorized">Uncategorized</option>
-            </select>
-        </nav>
-	
-<div class="no-items section" id="search_top" name="Search (Top)"></div><input class="fin" placeholder="Search Channel here..." type="text">
+<nav>
+    <select id="channel-dropdown" onchange="changeChannelGroup()">
+        <option value="All">All</option>
+        <option value="Entertainment">Entertainment</option>
+        <option value="Movies">Movies</option>
+        <option value="Sports">Sports</option>
+        <option value="Music">Music</option>
+        <option value="News">News</option>
+        <option value="English News">English News</option>  
+        <option value="Kids">Kids</option>
+        <option value="Knowledge">Knowledge</option>
+        <option value="Lifestyle">Lifestyle</option>
+        <option value="Bengali">Bengali</option>
+        <option value="Gujarati">Gujarati</option>
+        <option value="Hindi">Hindi</option>
+        <option value="Kannada">Kannada</option>
+        <option value="Malayalam">Malayalam</option>
+        <option value="Marathi">Marathi</option>
+        <option value="Odia">Odia</option>
+        <option value="Others">Others</option>
+        <option value="Punjabi">Punjabi</option>
+        <option value="Tamil">Tamil</option>
+        <option value="Telugu">Telugu</option>
+        <option value="shopping">shopping</option>
+        <option value="Spiritual">Spiritual</option>
+        <option value="Null">Null</option>
+        <option value="Uncategorized">Uncategorized</option>
+    </select>
+</nav>
+
+<div class="no-items section" id="search_top" name="Search (Top)"></div>
+<input class="fin" placeholder="Search Channel here..." type="text">
 <div class="new">
-
-<!--- fitch the channel data from json --->
-<div id="channel-container"></div>
-
-<br>
-	<br>
-		<br>
-			<br>
-				<br>
-
+    <div id="channel-container"></div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
 </div>
-
 
 <div class="footer bg-dark text-light">
-  <span class="text-danger">TP Web</span> Ad-Free <span class="text-danger">BY Denver1769</span>
+    <span class="text-danger">TP Web</span> Ad-Free <span class="text-danger">BY Denver1769</span>
 </div>
 
-<!-- Compiled and minified JavaScript -->
-  <script src="js/jquery-3.6.1.js"></script>
-  <script src="js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.plyr.io/3.6.8/plyr.polyfilled.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+<script src="js/jquery-3.6.1.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
 <script>
-	$(document).ready(function(){
-            $("#menuimg").click(function(){
-               $("#drop").slideToggle("fast"); 
-            });
+    $(document).ready(function(){
+        $("#menuimg").click(function(){
+            $("#drop").slideToggle("fast"); 
         });
-	</script>
-	
-	<!------------------JAVA SCRIPT-------------------->
-		
-	<script>
-$(document).ready(function() { var dftr = $('select.dftr'), headerCount = $('#headerCount'); headerCount.html('select a filter or use search'); dftr.on('change', function() { dftr.attr('disabled', 'disabled'); var records = $('#tvvTable').find('.tvv-item'); records.hide(); var critriaAttributes = []; dftr.each(function() { var $this = $(this), $selectedLength = $this.find(':selected').length, $critriaAttribute = ''; if ($selectedLength > 0 && $this.val() != '0') { if ($selectedLength == 1) { $critriaAttribute += '[data-' + $this.data('attribute') + '*="' + $this.val() + '"]'; } else { var $startDataAttribute = '[data-' + $this.data('attribute') + '*="', $endDataAttribute = '"]', $selectedValues = $this.val().toString(); $critriaAttribute += $startDataAttribute + $selectedValues.replaceAll(',', ($endDataAttribute + ',' + $startDataAttribute)) + $endDataAttribute; } critriaAttributes.push($critriaAttribute); } }); var $showRecords = records; if (critriaAttributes.length > 0) { $.each(critriaAttributes, function(i, filterValue) { $showRecords = $showRecords.filter(filterValue); }); } $showRecords.show(); headerCount.html($showRecords.length + ' channels filtered'); dftr.removeAttr('disabled'); $(".fin").val(''); }); $(".fin").keyup(function() { var filter = $(this).val(), count = 0; $('select.dftr').prop('selectedIndex',0); $(".tvv-item").each(function() { if ($(this).text().search(new RegExp(filter, "i")) < 0) { $(this).fadeOut(); } else { $(this).show(); count++; } }); }); }); 
-</script>
-
-
-    <script>
-    // Function to fetch JSON data asynchronously
-async function fetchData() {
-    const response = await fetch('/TP/Category.json');
-    const jsonData = await response.json();
-
-    // Now you have your JSON data
-    return jsonData;
-}
-
-// Function to change channel group
-async function changeChannelGroup() {
-    var selectedValue = $("#channel-dropdown").val();
-    $(".tvv-item").hide();
-
-    // Fetch JSON data
-    const jsonData = await fetchData();
-
-    // Filter the items based on JSON data
-    for (var i = 0; i < jsonData.length; i++) {
-        var item = jsonData[i];
-        if (selectedValue === "All" || item.channel_genre === selectedValue) {
-            $(".tvv-item:has(.tvv-name:contains('" + item.channel_name + "'))").show();
-        }
-    }
-}
-
-// Initial fetch when the page loads
-fetchData();
+    });
 </script>
 <script>
-        // Function to fetch and display channels
-        async function fetchAndDisplayChannels() {
-            try {
-                // Fetch the JSON data from the external file
-                const response = await fetch('/TP/Category.json');
-                if (!response.ok) {
-                    throw new Error('Network response was not ok ' + response.statusText);
-                }
-                const channels = await response.json();
+    $(document).ready(function() { 
+        var dftr = $('select.dftr'), headerCount = $('#headerCount');
+        headerCount.html('select a filter or use search'); 
+        dftr.on('change', function() { 
+            dftr.attr('disabled', 'disabled'); 
+            var records = $('#tvvTable').find('.tvv-item'); 
+            records.hide(); 
+            var critriaAttributes = []; 
+            dftr.each(function() { 
+                var $this = $(this), $selectedLength = $this.find(':selected').length, $critriaAttribute = ''; 
+                if ($selectedLength > 0 && $this.val() != '0') { 
+                    if ($selectedLength == 1) { 
+                        $critriaAttribute += '[data-' + $this.data('attribute') + '*="' + $this.val() + '"]'; 
+                    } else { 
+                        var $startDataAttribute = '[data-' + $this.data('attribute') + '*="', $endDataAttribute = '"]', $selectedValues = $this.val().toString(); 
+                        $critriaAttribute += $startDataAttribute + $selectedValues.replaceAll(',', ($endDataAttribute + ',' + $startDataAttribute)) + $endDataAttribute; 
+                    } 
+                    critriaAttributes.push($critriaAttribute); 
+                } 
+            }); 
+            var $showRecords = records; 
+            if (critriaAttributes.length > 0) { 
+                $.each(critriaAttributes, function(i, filterValue) { 
+                    $showRecords = $showRecords.filter(filterValue); 
+                }); 
+            } 
+            $showRecords.show(); 
+            headerCount.html($showRecords.length + ' channels filtered'); 
+            dftr.removeAttr('disabled'); 
+            $(".fin").val(''); 
+        }); 
+        $(".fin").keyup(function() { 
+            var filter = $(this).val(), count = 0; 
+            $('select.dftr').prop('selectedIndex',0); 
+            $(".tvv-item").each(function() { 
+                if ($(this).text().search(new RegExp(filter, "i")) < 0) { 
+                    $(this).fadeOut(); 
+                } else { 
+                    $(this).show(); 
+                    count++; 
+                } 
+            }); 
+        }); 
+    }); 
+</script>
+<script>
+    async function fetchData() {
+        const response = await fetch('/TP/Category.json');
+        const jsonData = await response.json();
+        return jsonData;
+    }
 
-                // Get the container where the channels will be appended
-                const container = document.getElementById('channel-container');
-
-                // Iterate through each channel in the JSON data
-                channels.forEach(channel => {
-                    // Create a div element with the class "tvv-item"
-                    const tvvItem = document.createElement('div');
-                    tvvItem.className = 'tvv-item';
-
-                    // Create the anchor element
-                    const anchor = document.createElement('a');
-                    anchor.href = `/TP/Player.html?id=${channel.channel_id}`;
-                    anchor.className = 'tvv-thumb';
-
-                    // Create the image element
-                    const img = document.createElement('img');
-                    img.className = 'lazyload';
-                    img.setAttribute('data-src', channel.channel_logo);
-                    img.style.height = '90px';
-
-                    // Create the card div
-                    const card = document.createElement('div');
-                    card.className = 'card-';
-
-                    // Create the name div
-                    const nameDiv = document.createElement('div');
-                    nameDiv.className = 'tvv-name';
-                    nameDiv.textContent = channel.channel_name;
-
-                    // Append the name div to the card div
-                    card.appendChild(nameDiv);
-
-                    // Append the image and card div to the anchor element
-                    anchor.appendChild(img);
-                    anchor.appendChild(card);
-
-                    // Append the anchor to the tvv-item div
-                    tvvItem.appendChild(anchor);
-
-                    // Append the tvv-item div to the container
-                    container.appendChild(tvvItem);
-                });
-            } catch (error) {
-                console.error('Error fetching the JSON data:', error);
+    async function changeChannelGroup() {
+        var selectedValue = $("#channel-dropdown").val();
+        $(".tvv-item").hide();
+        const jsonData = await fetchData();
+        for (var i = 0; i < jsonData.length; i++) {
+            var item = jsonData[i];
+            if (selectedValue === "All" || item.channel_genre === selectedValue) {
+                $(".tvv-item:has(.tvv-name:contains('" + item.channel_name + "'))").show();
             }
         }
+    }
 
-        // Call the function to fetch and display channels
-        fetchAndDisplayChannels();
-    </script>
-    
-    <script type="text/javascript">
-$(function(){$('.df-hide').on('click',function(){$('.pixabin-float-telegram').fadeOut(170);});});
+    fetchData();
 </script>
 <script>
-  window.onload = function() {
-  var puURL = '#';
-  var puTS = Math.round(+new Date()/1000);
-  console.log('T.'+localStorage.puTS+'/'+puTS);
-  if (typeof localStorage.puTS == 'undefined' || parseInt(localStorage.puTS) <= (puTS - 3600)) {
-    var links = document.getElementsByTagName('a');
-    for(var i = 0, len = links.length; i < len; i++) {
-      links[i].onclick = function (e) {
-        var puHref = this.getAttribute("href");
-          var puTarget = this.getAttribute("target");
-          if (puHref !== '#' && puHref !== 'javascript:void(0)') {
-          e.preventDefault();    
-          if (puTarget == '_blank') {
-            window.open(window.location.href);
-          }
-          window.open(puHref);
-          window.location.href = puURL;
-          localStorage.puTS = puTS;
+    async function fetchAndDisplayChannels() {
+        try {
+            const response = await fetch('/TP/Category.json');
+            if (!response.ok) {
+                throw new Error('Network response was not ok ' + response.statusText);
+            }
+            const channels = await response.json();
+            const container = document.getElementById('channel-container');
+            channels.forEach(channel => {
+                const tvvItem = document.createElement('div');
+                tvvItem.className = 'tvv-item';
+                const anchor = document.createElement('a');
+                anchor.href = `/TP/Player.html?id=${channel.channel_id}`;
+                anchor.className = 'tvv-thumb';
+                const img = document.createElement('img');
+                img.className = 'lazyload';
+                img.setAttribute('data-src', channel.channel_logo);
+                img.style.height = '90px';
+                const card = document.createElement('div');
+                card.className = 'card-';
+                const nameDiv = document.createElement('div');
+                nameDiv.className = 'tvv-name';
+                nameDiv.textContent = channel.channel_name;
+                card.appendChild(nameDiv);
+                anchor.appendChild(img);
+                anchor.appendChild(card);
+                tvvItem.appendChild(anchor);
+                container.appendChild(tvvItem);
+            });
+        } catch (error) {
+            console.error('Error fetching the JSON data:', error);
         }
-      }
     }
-  }
-};
-    
+
+    fetchAndDisplayChannels();
 </script>
-<center>
+<script type="text/javascript">
+    $(function(){
+        $('.df-hide').on('click',function(){
+            $('.pixabin-float-telegram').fadeOut(170);
+        });
+    });
+</script>
+<script>
+    window.onload = function() {
+        var puURL = '#';
+        var puTS = Math.round(+new Date()/1000);
+        console.log('T.'+localStorage.puTS+'/'+puTS);
+        if (typeof localStorage.puTS == 'undefined' || parseInt(localStorage.puTS) <= (puTS - 3600)) {
+            var links = document.getElementsByTagName('a');
+            for(var i = 0, len = links.length; i < len; i++) {
+                links[i].onclick = function (e) {
+                    var puHref = this.getAttribute("href");
+                    var puTarget = this.getAttribute("target");
+                    if (puHref !== '#' && puHref !== 'javascript:void(0)') {
+                        e.preventDefault();    
+                        if (puTarget == '_blank') {
+                            window.open(window.location.href);
+                        }
+                        window.open(puHref);
+                        window.location.href = puURL;
+                        localStorage.puTS = puTS;
+                    }
+                }
+            }
+        }
+    };
+</script>
 
+<!-- Video Player Section -->
+<div class="video-container">
+    <video id="player" controls></video>
+</div>
 
-</center></body></html>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const player = new Plyr('#player', {
+            captions: { active: true, language: 'auto' },
+            seekTime: 10,
+            controls: [
+                'play-large', 'play', 'progress', 'current-time', 'mute', 'volume', 'settings', 'pip', 'airplay', 'fullscreen'
+            ],
+            disableContextMenu: false,
+            hideControls: false,
+        });
+
+        const videoSrc = 'https://path.to/your/video/stream.m3u8';  // Update with actual video stream URL
+        if (Hls.isSupported()) {
+            const hls = new Hls();
+            hls.loadSource(videoSrc);
+            hls.attachMedia(player.media);
+            hls.on(Hls.Events.MANIFEST_PARSED, function () {
+                player.play();
+            });
+        } else if (player.canPlayType('application/vnd.apple.mpegurl')) {
+            player.src = videoSrc;
+            player.play();
+        }
+    });
+</script>
+
+</body>
+</html>
