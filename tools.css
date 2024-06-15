@@ -1,0 +1,89 @@
+.bar input{
+    width: 80%;
+    height: 55px;
+    padding-left: .5rem;
+
+font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.accordion-button{
+    outline: 0px solid transparent;
+    border: 0px solid transparent;
+    height: 100px;
+
+}
+
+
+#vootlogo {
+    width: 150px;
+}
+
+#mdisklogo {
+    width: 150px;
+}
+
+#end{
+    width: 150px;
+    margin-left: 2rem;
+}
+
+.zee5{
+    display: none;
+}
+
+
+.input {
+    width: 95%;
+    text-align: center;
+    padding-top: 3.5rem;
+}
+
+.input input {
+    width: 70%;
+    height: 47px;
+    padding-left: 1rem;
+}
+
+.input a {
+    border-radius: 4px;
+    width: 30%;
+    height: 50px;
+    padding-top: .7rem;
+}
+
+.result {
+    width: 100%;
+    text-align: center;
+    padding-top: 3.5rem;
+    margin-bottom: 10rem;
+}
+
+.result textarea {
+    width: 80%;
+    height: 120px;
+    top:0%;
+    padding-left: 1rem;
+    margin-top:1rem;
+   
+}
+
+.result #copy {
+    border-radius: 0px;
+}
+
+
+.btnlogin a{
+    width: 250px;
+    height: 150px;
+}
+@media only screen and (max-width: 500px) {
+    #vootlogo {
+        width: 90px;
+    }
+    #mdisklogo {
+        width: 90px;
+    }
+    #end{
+        width: 90px;
+    }
+  }
