@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TV Channels</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #000000;
+            color: #ffffff;
+            transition: all 0.5s ease-in-out;
+        }
+
+        body.dark-mode {
+            background-color: #F0F0F0;
+            color: #111;
+            --dark-black: #111;
+        }
+
+        .header {
+            background-color: #222;
+            color: #ffffff;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .site-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .site-card {
+            background-color: #333;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .site-card img {
+            width: 100%;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        .site-info {
+            margin-bottom: 1rem;
+        }
+
+        .site-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .site-link {
+            display: inline-block;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        .site-link:hover {
+            background-color: #45a049;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            background-color: #222;
+            color: #ffffff;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>Popular TV Channels</h1>
+    </header>
+
+    <div class="container">
+        <div class="site-grid">
+            <!-- Zee Telugu -->
+            <div class="site-card">
+                <img src="https://1000logos.net/wp-content/uploads/2021/02/Zee-Telugu-logo.jpg" alt="Zee Telugu Logo">
+                <div class="site-info">
+                    <h3>Zee Telugu</h3>
+                    <a class="site-link" href="https://madplay.live/hls/jiotv/stream.php?id=638&e=.m3u8" target="_blank">Watch Now</a>
+                </div>
+            </div>
+
+            <!-- ETV Telugu -->
+            <div class="site-card">
+                <img src="https://www.pngwing.com/en/free-png-zfnsz" alt="ETV Telugu Logo">
+                <div class="site-info">
+                    <h3>ETV Telugu</h3>
+                    <a class="site-link" href="https://madplay.live/hls/jiotv/stream.php?id=629&e=.m3u8" target="_blank">Watch Now</a>
+                </div>
+            </div>
+
+            <!-- Nick Telugu -->
+            <div class="site-card">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj33DnGGI7520Upxw725goYhYMR58tKCCuZT47pAZVL2PsKmpiY_HINpmXJoWxQUVavN9EibiI9PTOKwB8j2dMd5ElvGRbekSCApDQOTYes66MQSNGeAdOCMMPsGFDzHeBhXedA1MtQrqb_44Ty_C4loHIdUH4WgppV2ARk0PQ3POo7W2Y35a5y/s370/nicknewlogo.png" alt="Nick Telugu Logo">
+                <div class="site-info">
+                    <h3>Nick Telugu</h3>
+                    <a class="site-link" href="https://madplay.live/hls/jiotv/stream.php?id=543&e=.m3u8" target="_blank">Watch Now</a>
+                </div>
+            </div>
+
+            <!-- TV9 Telugu -->
+            <div class="site-card">
+                <img src="http://jiotv.catchup.cdn.jio.com/dare_images/images/TV9_Telugu_News.png" alt="TV9 Telugu Logo">
+                <div class="site-info">
+                    <h3>TV9 Telugu</h3>
+                    <a class="site-link" href="https://madplay.live/hls/jiotv/stream.php?id=618&e=.m3u8" target="_blank">Watch Now</a>
+                </div>
+            </div>
+
+            <!-- Raj Music Telugu -->
+            <div class="site-card">
+                <img src="http://jiotv.catchup.cdn.jio.com/dare_images/images/Raj_Music_Telugu.png" alt="Raj Music Telugu Logo">
+                <div class="site-info">
+                    <h3>Raj Music Telugu</h3>
+                    <a class="site-link" href="https://madplay.live/hls/jiotv/stream.php?id=737&e=.m3u8" target="_blank">Watch Now</a>
+                </div>
+            </div>
+
+            <!-- Cartoon Network Telugu -->
+            <div class="site-card">
+                <img src="http://jiotv.catchup.cdn.jio.com/dare_images/images/Cartoon_Network_Telugu.png" alt="Cartoon Network Telugu Logo">
+                <div class="site-info">
+                    <h3>Cartoon Network Telugu</h3>
+                    <a class="site-link" href="https://madplay.live/hls/jiotv/stream.php?id=166&e=.m3u8" target="_blank">Watch Now</a>
+                </div>
+            </div>
+
+            <!-- Raj News Telugu -->
+            <div class="site-card">
+                <img src="http://jiotv.catchup.cdn.jio.com/dare_images/images/Raj_News_Telugu.png" alt="Raj News Telugu Logo">
+                <div class="site-info">
+                    <h3>Raj News Telugu</h3>
+                    <a class="site-link" href="https://madplay.live/hls/jiotv/stream.php?id=664&e=.m3u8" target="_blank">Watch Now</a>
+                </div>
+            </div>
+
+            <!-- Sony Yay Telugu -->
+            <div class="site-card">
+                <img src="http://jiotv.catchup.cdn.jio.com/dare_images/images/Sony_Yay_Telugu.png" alt="Sony Yay Telugu Logo">
+                <div class="site-info">
+                    <h3>Sony Yay Telugu</h3>
+                    <a class="site-link" href="https://bpprod3catchup.akamaized.net/bpk-tv/irdeto_com_Channel_365/output/dash/Sony_Yay-video=1297600-214763245.m3u" target="_blank">Watch Now</a>
+                </div>
+            </div>
+
+            <!-- CN HD+ Telugu -->
+            <div class="site-card">
+                <img src="http://jiotv.catchup.cdn.jio.com/dare_images/images/CN_HD_Telugu.png" alt="CN HD+ Telugu Logo">
+                <div class="site-info">
+                    <h3>CN HD+ Telugu</h3>
+                    <a class="site-link" href="https://madplay.live/hls/jiotv/stream.php?id=1080&e=.m3u8" target="_blank">Watch Now</a>
+                </div>
+            </div>
+
+            <!-- Sonic Telugu -->
+            <div class="site-card">
+                <img src="http://jiotv.catchup.cdn.jio.com/dare_images/images/Sonic_Telugu.png" alt="Sonic Telugu Logo">
+                <div class="site-info">
+                    <h3>Sonic Telugu</h3>
+                    <a class="site-link" href="https://madplay.live/hls/jiotv/stream.php?id=1242&e=.m3u8" target="_blank">Watch Now</a>
+                </div>
+            </div>
+
+            <!-- Pogo Telugu -->
+            <div class="site-card">
+                <img src="http://jiotv.catchup.cdn.jio.com/dare_images/images/Pogo_Telugu.png" alt="Pogo Telugu Logo">
+                <div class="site-info">
+                    <h3>Pogo Telugu</h3>
+                    <a class="site-link" href="https://madplay.live/hls/jiotv/stream.php?id=1883&e=.m3u8" target="_blank">Watch Now</a>
+                </div>
+            </div>
+
+            <!-- Gemini Comedy -->
+            <div class="site-card">
+                <img src="http://jiotv.catchup.cdn.jio.com/dare_images/images/Gemini_Comedy_Telugu.png" alt="Gemini Comedy Telugu Logo">
+                <div class="site-info">
+                    <h3>Gemini Comedy</h3>
+                    <a class="site-link" href="https://madplay.live/hls/jiotv/stream.php?id=1192&e=.m3u8" target="_blank">Watch Now</a>
+                </div>
+            </div>
+
+            <!-- V6 News Telugu -->
+            <div class="site-card">
+                <img src="http://jiotv.catchup.cdn.jio.com/dare_images/images/V6_News_Telugu.png" alt="V6 News Telugu Logo">
+                <div class="site-info">
+                    <h3>V6 News Telugu</h3>
+                    <a class="site-link" href="https://madplay.live/hls/jiotv/stream.php?id=645&e=.m3u8" target="_blank">Watch Now</a>
+                </div>
+            </div>
+
+            <!-- 10TV Telugu -->
+            <div class="site-card">
+                <img src="http://jiotv.catchup.cdn.jio.com/dare_images/images/10TV_Telugu.png" alt="10TV Telugu Logo">
+                <div class="site-info">
+                    <h3>10TV Telugu</h3>
+                    <a class="site-link" href="https://madplay.live/hls/jiotv/stream.php?id=632&e=.m3u8" target="_blank">Watch Now</a>
+                </div>
+            </div>
+
+            <!-- Sakshi TV -->
+            <div class="site-card">
+                <img src="http://jiotv.catchup.cdn.jio.com/dare_images/images/Sakshi_TV_Telugu.png" alt="Sakshi TV Telugu Logo">
+                <div class="site-info">
+                    <h3>Sakshi TV</h3>
+                    <a class="site-link" href="https://madplay.live/hls/jiotv/stream.php?id=611&e=.m3u8" target="_blank">Watch Now</a>
+                </div>
+            </div>
+
+            <!-- ABN Andhrajyothy -->
+            <div class="site-card">
+                <img src="http://jiotv.catchup.cdn.jio.com/dare_images/images/ABN_Andhrajyothy_Telugu.png" alt="ABN Andhrajyothy Telugu Logo">
+                <div class="site-info">
+                    <h3>ABN Andhrajyothy</h3>
+                    <a class="site-link" href="https://madplay.live/hls/jiotv/stream.php?id=613&e=.m3u8" target="_blank">Watch Now</a>
+                </div>
+            </div>
+
+            <!-- NTV Telugu -->
+            <div class="site-card">
+                <img src="http://jiotv.catchup.cdn.jio.com/dare_images/images/NTV_Telugu.png" alt="NTV Telugu Logo">
+                <div class="site-info">
+                    <h3>NTV Telugu</h3>
+                    <a class="site-link" href="https://madplay.live/hls/jiotv/stream.php?id=620&e=.m3u8" target="_blank">Watch Now</a>
+                </div>
+            </div>
+
+            <!-- Gemini TV -->
+            <div class="site-card">
+                <img src="http://jiotv.catchup.cdn.jio.com/dare_images/images/Gemini_TV_Telugu.png" alt="Gemini TV Telugu Logo">
+                <div class="site-info">
+                    <h3>Gemini TV</h3>
+                    <a class="site-link" href="https://madplay.live/hls/jiotv/stream.php?id=631&e=.m3u8" target="_blank">Watch Now</a>
+                </div>
+            </div>
+
+            <!-- Maa TV -->
+            <div class="site-card">
+                <img src="http://jiotv.catchup.cdn.jio.com/dare_images/images/Maa_TV_Telugu.png" alt="Maa TV Telugu Logo">
+                <div class="site-info">
+                    <h3>Maa TV</h3>
+                    <a class="site-link" href="https://madplay.live/hls/jiotv/stream.php?id=628&e=.m3u8" target="_blank">Watch Now</a>
+                </div>
+            </div>
+
+            <!-- TV5 Telugu -->
+            <div class="site-card">
+                <img src="http://jiotv.catchup.cdn.jio.com/dare_images/images/TV5_Telugu_News.png" alt="TV5 Telugu Logo">
+                <div class="site-info">
+                    <h3>TV5 Telugu</h3>
+                    <a class="site-link" href="https://madplay.live/hls/jiotv/stream.php?id=619&e=.m3u8" target="_blank">Watch Now</a>
+                </div>
+            </div>
+
+            <!-- Gemini Movies -->
+            <div class="site-card">
+                <img src="http://jiotv.catchup.cdn.jio.com/dare_images/images/Gemini_Movies_Telugu.png" alt="Gemini Movies Telugu Logo">
+                <div class="site-info">
+                    <h3>Gemini Movies</h3>
+                    <a class="site-link" href="https://madplay.live/hls/jiotv/stream.php?id=630&e=.m3u8" target="_blank">Watch Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2024 TV Channels. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Optional: Implement dark mode functionality
+        const body = document.body;
+        const toggleDarkMode = () => {
+            body.classList.toggle('dark-mode');
+        };
+    </script>
+</body>
+</html>
