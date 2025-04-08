@@ -1,39 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ACM TV - Live Channels</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <header>
-        <h1>ACM TV</h1>
-        <div class="theme-toggle">
-            <span>Light</span>
-            <label class="switch">
-                <input type="checkbox" id="theme-switch">
-                <span class="slider"></span>
-            </label>
-            <span>Dark</span>
-        </div>
-    </header>
-
-    <div class="container">
-        <div class="channel-list">
-            <h2>Choose a Channel</h2>
-            <!-- Channels will be listed here dynamically -->
-        </div>
-        <div class="video-container">
-            <video id="player" controls></video>
-        </div>
-    </div>
-
-    <footer>
-        <p>Powered by ACM Network | Enjoy Free TV Streaming</p>
-    </footer>
-
-    <script src="app.js"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <title>ACM Network</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
 </html>
