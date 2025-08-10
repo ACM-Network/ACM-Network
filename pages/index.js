@@ -1,80 +1,49 @@
-// ACM Network — Simple HLS Player
-
-import { useEffect, useRef, useState } from 'react';
-import Hls from 'hls.js';
+import { useState, useRef, useEffect } from "react";
+import Hls from "hls.js";
 
 export default function Home() {
-  const [url, setUrl] = useState('');
-  const [submittedUrl, setSubmittedUrl] = useState('');
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [audioTracks, setAudioTracks] = useState([]);
-  const [selectedAudio, setSelectedAudio] = useState(-1);
+  const [introDone, setIntroDone] = useState(false);
+  const [streamUrl, setStreamUrl] = useState("");
+  const [playStream, setPlayStream] = useState(false);
   const videoRef = useRef(null);
-  const hlsRef = useRef(null);
 
   useEffect(() => {
-    if (submittedUrl && Hls.isSupported()) {
-      const hls = new Hls({
-        enableWorker: true,
-        lowLatencyMode: true
-      });
-      hlsRef.current = hls;
-
-      hls.loadSource(submittedUrl);
-      hls.attachMedia(videoRef.current);
-
-      hls.on(Hls.Events.MANIFEST_PARSED, (_, data) => {
-        setAudioTracks(data.audioTracks);
-      });
-
-      return () => hls.destroy();
-    } else if (submittedUrl) {
-      videoRef.current.src = submittedUrl;
+    if (playStream && videoRef.current) {
+      if (Hls.isSupported()) {
+        const hls = new Hls();
+        hls.loadSource(streamUrl);
+        hls.attachMedia(videoRef.current);
+      } else if (videoRef.current.canPlayType("application/vnd.apple.mpegurl")) {
+        videoRef.current.src = streamUrl;
+      }
     }
-  }, [submittedUrl]);
-
-  const changeAudioTrack = (trackId) => {
-    setSelectedAudio(trackId);
-    if (hlsRef.current) {
-      hlsRef.current.audioTrack = trackId;
-    }
-  };
+  }, [playStream, streamUrl]);
 
   return (
-    <div style={{ textAlign: 'center', padding: '20px', background: '#000', color: '#fff', minHeight: '100vh' }}>
-      {!isPlaying ? (
-        <div>
-          <h1 style={{ fontSize: '2rem' }}>🎬 ACM Network</h1>
+    <div className="container">
+      {!introDone && (
+        <div className="intro" onClick={() => setIntroDone(true)}>
+          <h1 className="glitch" data-text="ACM Network">ACM Network</h1>
+          <p className="click">Click to Enter</p>
+        </div>
+      )}
+
+      {introDone && !playStream && (
+        <div className="modal">
+          <h2>Enter Stream Link</h2>
           <input
             type="text"
-            value={url}
-            placeholder="Paste stream link..."
-            onChange={(e) => setUrl(e.target.value)}
-            style={{ width: '300px', padding: '10px' }}
+            value={streamUrl}
+            onChange={(e) => setStreamUrl(e.target.value)}
+            placeholder="Paste your stream URL here..."
           />
-          <button
-            onClick={() => { setSubmittedUrl(url); setIsPlaying(true); }}
-            style={{ marginLeft: '10px', padding: '10px' }}
-          >
-            ▶ Play
-          </button>
+          <button onClick={() => setPlayStream(true)}>Play</button>
         </div>
-      ) : (
-        <div>
-          <video ref={videoRef} controls autoPlay style={{ width: '80%', borderRadius: '8px', marginTop: '20px' }} />
-          {audioTracks.length > 0 && (
-            <div style={{ marginTop: '10px' }}>
-              <label>Select Audio Track: </label>
-              <select
-                value={selectedAudio}
-                onChange={(e) => changeAudioTrack(parseInt(e.target.value))}
-              >
-                {audioTracks.map((track, i) => (
-                  <option key={i} value={i}>{track.name || `Track ${i+1}`}</option>
-                ))}
-              </select>
-            </div>
-          )}
+      )}
+
+      {playStream && (
+        <div className="player-container">
+          <video ref={videoRef} controls className="acm-player" />
         </div>
       )}
     </div>
