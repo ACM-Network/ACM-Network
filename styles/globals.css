@@ -1,0 +1,22 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #000;
+  color: white;
+}
+
+input, button, select {
+  border: none;
+  outline: none;
+}
+
+button {
+  cursor: pointer;
+  background: red;
+  color: white;
+  border-radius: 4px;
+}
+
+button:hover {
+  background: darkred;
+}
