@@ -8,29 +8,32 @@ export default function Home() {
 
   const handlePlay = () => {
     if (!videoUrl.trim()) return;
-
     setShowPlayer(true);
 
     setTimeout(() => {
       const video = document.getElementById("video");
       if (Hls.isSupported()) {
         const hls = new Hls({
-          maxBufferLength: 10,
-          liveSyncDuration: 1,
+          maxBufferLength: 3, // keep buffer very short
+          liveSyncDuration: 1, // fast live sync
+          liveMaxLatencyDuration: 3, // minimal latency
         });
         hls.loadSource(videoUrl);
         hls.attachMedia(video);
+        hls.on(Hls.Events.MANIFEST_PARSED, () => {
+          video.play();
+        });
       } else if (video.canPlayType("application/vnd.apple.mpegurl")) {
         video.src = videoUrl;
+        video.play();
       }
     }, 0);
   };
 
   return (
-    <div style={{ textAlign: "center", padding: "20px" }}>
+    <div style={{ textAlign: "center", padding: "20px", backgroundColor: "#000", minHeight: "100vh" }}>
       <Head>
         <title>Toonix TV</title>
-        <meta name="description" content="Watch Toonix TV live streaming" />
       </Head>
 
       <h1 style={{ color: "#ff9900" }}>Toonix TV</h1>
@@ -69,7 +72,7 @@ export default function Home() {
             id="video"
             controls
             autoPlay
-            style={{ width: "80%", borderRadius: "10px" }}
+            style={{ width: "80%", borderRadius: "10px", backgroundColor: "#000" }}
           ></video>
         </div>
       )}
