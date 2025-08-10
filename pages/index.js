@@ -1,81 +1,85 @@
-import { useState } from "react";
-import Head from "next/head";
-import Hls from "hls.js";
+// pages/index.js
+import { useEffect, useState } from 'react';
+import dynamic from 'next/dynamic';
+const ACMPlayer = dynamic(() => import('../components/ACMPlayer'), { ssr: false });
 
 export default function Home() {
-  const [videoUrl, setVideoUrl] = useState("");
+  const [showIntro, setShowIntro] = useState(true);
+  const [streamLink, setStreamLink] = useState('');
+  const [openedStream, setOpenedStream] = useState('');
   const [showPlayer, setShowPlayer] = useState(false);
 
-  const handlePlay = () => {
-    if (!videoUrl.trim()) return;
-    setShowPlayer(true);
+  // Keep the same intro timing as before
+  useEffect(() => {
+    const t = setTimeout(() => setShowIntro(false), 2500);
+    return () => clearTimeout(t);
+  }, []);
 
+  function openStream() {
+    const url = streamLink.trim();
+    if (!url) {
+      alert('Paste a stream URL (mp4 or .m3u8).');
+      return;
+    }
+    setOpenedStream(url);
+    setShowPlayer(true);
+    // allow DOM to render player before attaching
     setTimeout(() => {
-      const video = document.getElementById("video");
-      if (Hls.isSupported()) {
-        const hls = new Hls({
-          maxBufferLength: 3, // keep buffer very short
-          liveSyncDuration: 1, // fast live sync
-          liveMaxLatencyDuration: 3, // minimal latency
-        });
-        hls.loadSource(videoUrl);
-        hls.attachMedia(video);
-        hls.on(Hls.Events.MANIFEST_PARSED, () => {
-          video.play();
-        });
-      } else if (video.canPlayType("application/vnd.apple.mpegurl")) {
-        video.src = videoUrl;
-        video.play();
-      }
-    }, 0);
-  };
+      // nothing here — ACMPlayer handles attaching HLS and play on user gesture
+    }, 50);
+  }
+
+  function closePlayer() {
+    setShowPlayer(false);
+    setOpenedStream('');
+  }
 
   return (
-    <div style={{ textAlign: "center", padding: "20px", backgroundColor: "#000", minHeight: "100vh" }}>
-      <Head>
-        <title>Toonix TV</title>
-      </Head>
+    <div className="site-root">
+      <header className="hero">
+        <div className="hero-inner">
+          <h1 className="acm-title">ACM Network</h1>
+          <p className="acm-sub">Cult Classic • Stream Anything</p>
+        </div>
+      </header>
 
-      <h1 style={{ color: "#ff9900" }}>Toonix TV</h1>
-
-      <input
-        type="text"
-        placeholder="Enter .m3u8 link"
-        value={videoUrl}
-        onChange={(e) => setVideoUrl(e.target.value)}
-        style={{
-          width: "70%",
-          padding: "10px",
-          marginBottom: "10px",
-          borderRadius: "5px",
-          border: "1px solid #ccc",
-        }}
-      />
-      <br />
-      <button
-        onClick={handlePlay}
-        style={{
-          padding: "10px 20px",
-          backgroundColor: "#ff9900",
-          color: "white",
-          border: "none",
-          borderRadius: "5px",
-          cursor: "pointer",
-        }}
-      >
-        Play
-      </button>
-
-      {showPlayer && (
-        <div style={{ marginTop: "20px" }}>
-          <video
-            id="video"
-            controls
-            autoPlay
-            style={{ width: "80%", borderRadius: "10px", backgroundColor: "#000" }}
-          ></video>
+      {showIntro && (
+        <div className="intro-overlay">
+          <div className="intro-text">
+            <div className="glitch" data-text="ACM NETWORK">ACM NETWORK</div>
+            <div className="sub">Cult Classic</div>
+          </div>
         </div>
       )}
+
+      {!showPlayer && (
+        <main className="center-card">
+          <div className="glass">
+            <h2>Paste your stream link</h2>
+            <input
+              type="text"
+              value={streamLink}
+              onChange={(e) => setStreamLink(e.target.value)}
+              placeholder="https://.../stream.m3u8  or https://.../video.mp4"
+            />
+            <div className="row">
+              <button className="primary" onClick={openStream}>Open in ACM Player</button>
+              <button className="ghost" onClick={() => setStreamLink('')}>Clear</button>
+            </div>
+            <p className="hint">ACM Player supports HLS (.m3u8) with multi-audio. Use HLS from a fast CDN for best results.</p>
+          </div>
+        </main>
+      )}
+
+      {showPlayer && (
+        <section className="player-section">
+          <ACMPlayer src={openedStream} onClose={closePlayer} />
+        </section>
+      )}
+
+      <footer className="site-footer">
+        © {new Date().getFullYear()} ACM Network — Cult Classic Player (ACM Player)
+      </footer>
     </div>
   );
-}
+        }
