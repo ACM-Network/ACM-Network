@@ -7,36 +7,33 @@ export default function ACMPlayer({ src, onClose }) {
   const hlsRef = useRef(null);
 
   const [isPlaying, setIsPlaying] = useState(false);
-  const [isBuffering, setIsBuffering] = useState(false);
+  const [isBuffering, setIsBuffering] = useState(true);
   const [duration, setDuration] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
   const [volume, setVolume] = useState(1);
   const [muted, setMuted] = useState(false);
   const [audioTracks, setAudioTracks] = useState([]);
   const [selectedAudio, setSelectedAudio] = useState(-1);
-  const [error, setError] = useState('');
 
   useEffect(() => {
     const v = videoRef.current;
     if (!v || !src) return;
 
-    // Clean up previous
+    // Cleanup old hls if any
     if (hlsRef.current) {
       try { hlsRef.current.destroy(); } catch (e) {}
       hlsRef.current = null;
     }
 
-    // If HLS and browser doesn't natively support, use hls.js
-    const isM3U8 = src.toLowerCase().includes('.m3u8');
-    const canPlayNativeHls = v.canPlayType('application/vnd.apple.mpegurl') !== '';
+    const isM3u8 = String(src).toLowerCase().includes('.m3u8');
+    const canPlayNative = v.canPlayType('application/vnd.apple.mpegurl') !== '';
 
-    if (isM3U8 && Hls.isSupported() && !canPlayNativeHls) {
+    // HLS.js for non-native browsers
+    if (isM3u8 && Hls.isSupported() && !canPlayNative) {
       const hls = new Hls({
-        // buffer settings to reduce initial buffering — tweak as needed
-        maxBufferLength: 30,
-        maxMaxBufferLength: 60,
-        backBufferLength: 15,
-        lowLatencyMode: true,
+        maxBufferLength: 3,
+        liveSyncDuration: 1,
+        liveMaxLatencyDuration: 3,
         enableWorker: true,
       });
       hlsRef.current = hls;
@@ -44,48 +41,36 @@ export default function ACMPlayer({ src, onClose }) {
       hls.on(Hls.Events.ERROR, (event, data) => {
         console.error('HLS error', data);
         if (data && data.fatal) {
-          setError('Playback error. See console for details.');
           try { hls.destroy(); } catch (e) {}
         }
       });
 
       hls.on(Hls.Events.MANIFEST_PARSED, () => {
-        // play automatically if user gesture available
-        v.play().catch(() => {});
+        setIsBuffering(false);
       });
 
       hls.on(Hls.Events.BUFFER_STALLED, () => setIsBuffering(true));
       hls.on(Hls.Events.BUFFER_APPENDED, () => setIsBuffering(false));
+
       hls.on(Hls.Events.AUDIO_TRACKS_UPDATED, (evt, data) => {
         const tracks = (data && data.audioTracks) || [];
         setAudioTracks(tracks.map((t, i) => ({ name: t.name || `Track ${i}`, lang: t.lang, index: i })));
       });
+
       hls.on(Hls.Events.AUDIO_TRACK_SWITCHED, () => {
         setSelectedAudio(hls.audioTrack);
       });
 
       hls.loadSource(src);
       hls.attachMedia(v);
-      hls.startLoad();
+      // do NOT autoStart load here; play is triggered by user gesture (Play button).
     } else {
-      // Native support or non-HLS (mp4)
+      // Native HLS (Safari) or MP4
       v.src = src;
       v.load();
-      v.play().catch(() => {});
-      // collect native audioTracks (limited browser support)
-      try {
-        const tracks = v.audioTracks || [];
-        if (tracks && tracks.length) {
-          const arr = [];
-          for (let i = 0; i < tracks.length; i++) {
-            arr.push({ name: tracks[i].label || `Track ${i}`, lang: tracks[i].language, index: i });
-          }
-          setAudioTracks(arr);
-        }
-      } catch (e) {}
     }
 
-    // Attach basic listeners
+    // Video event listeners
     const onPlay = () => setIsPlaying(true);
     const onPause = () => setIsPlaying(false);
     const onTime = () => setCurrentTime(v.currentTime);
@@ -101,13 +86,13 @@ export default function ACMPlayer({ src, onClose }) {
     v.addEventListener('playing', onPlaying);
 
     return () => {
-      // cleanup
       v.removeEventListener('play', onPlay);
       v.removeEventListener('pause', onPause);
       v.removeEventListener('timeupdate', onTime);
       v.removeEventListener('loadedmetadata', onLoaded);
       v.removeEventListener('waiting', onWaiting);
       v.removeEventListener('playing', onPlaying);
+
       if (hlsRef.current) {
         try { hlsRef.current.destroy(); } catch (e) {}
         hlsRef.current = null;
@@ -115,7 +100,15 @@ export default function ACMPlayer({ src, onClose }) {
     };
   }, [src]);
 
-  // Controls
+  function handlePlayClick() {
+    const v = videoRef.current;
+    if (!v) return;
+    // user gesture: start playback -> allowed on mobile
+    v.play().catch((e) => {
+      console.warn('play prevented', e);
+    });
+  }
+
   function togglePlay() {
     const v = videoRef.current;
     if (!v) return;
@@ -126,7 +119,7 @@ export default function ACMPlayer({ src, onClose }) {
   function seek(val) {
     const v = videoRef.current;
     if (!v) return;
-    v.currentTime = Math.max(0, Math.min((duration || 0), val));
+    v.currentTime = Math.max(0, Math.min(duration || 0, val));
   }
 
   function changeVolume(val) {
@@ -151,7 +144,6 @@ export default function ACMPlayer({ src, onClose }) {
         hlsRef.current.audioTrack = idx;
         setSelectedAudio(idx);
       } else if (videoRef.current && videoRef.current.audioTracks) {
-        // native audio tracks
         for (let i = 0; i < videoRef.current.audioTracks.length; i++) {
           videoRef.current.audioTracks[i].enabled = i === idx;
         }
@@ -167,15 +159,14 @@ export default function ACMPlayer({ src, onClose }) {
       <div className="player-top">
         <div className="player-title">ACM Player</div>
         <div className="player-actions">
-          <button className="btn" onClick={() => { if (onClose) onClose(); }}>
-            Close
-          </button>
+          <button className="btn" onClick={() => { if (onClose) onClose(); }}>Close</button>
         </div>
       </div>
 
       <div className="player-stage">
         <video
           ref={videoRef}
+          id="video-main"
           className="acm-video"
           playsInline
           controls={false}
@@ -217,8 +208,6 @@ export default function ACMPlayer({ src, onClose }) {
           </select>
         </div>
       </div>
-
-      {error && <div className="player-error">{error}</div>}
     </div>
   );
 }
