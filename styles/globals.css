@@ -1,3 +1,204 @@
+/* styles/globals.css - Cult classic, neon, glassmorphism */
+:root{
+  --bg:#06060a;
+  --glass: rgba(255,255,255,0.04);
+  --accent1: #ff0066;
+  --accent2: #00ffd5;
+  --muted:#9aa2b1;
+}
+
+*{box-sizing:border-box}
+html,body,#__next{height:100%}
+body{
+  margin:0;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: radial-gradient(1200px 600px at 10% 10%, rgba(0,20,40,0.5), transparent 10%), linear-gradient(180deg, #02030a 0%, #05050a 100%), var(--bg);
+  color:#e6eef8;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+/* HERO */
+.hero {
+  padding: 3rem 1rem;
+  text-align:center;
+  position:relative;
+  z-index:2;
+}
+.hero-inner{
+  display:inline-block;
+  padding:1rem 2rem;
+  border-radius:14px;
+  background: linear-gradient(90deg, rgba(255,0,102,0.08), rgba(0,255,213,0.03));
+  border: 1px solid rgba(255,255,255,0.04);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+}
+.acm-title{
+  margin:0;
+  font-size: clamp(28px, 4vw, 44px);
+  letter-spacing:2px;
+  font-weight:800;
+  color: white;
+  text-transform: uppercase;
+}
+.acm-sub{
+  margin:6px 0 0;
+  color:var(--muted);
+}
+
+/* Intro glitch overlay */
+.intro-overlay{
+  position: fixed;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:50;
+  background: linear-gradient(180deg, rgba(0,0,0,0.85), rgba(0,0,0,0.6));
+}
+.intro-text{ text-align:center }
+.glitch{
+  font-family: "Courier New", Courier, monospace;
+  font-size: clamp(36px, 8vw, 88px);
+  font-weight:900;
+  color: white;
+  position:relative;
+  letter-spacing:6px;
+  text-transform:uppercase;
+  transform:translateY(-10px);
+}
+.glitch::before,
+.glitch::after{
+  content: attr(data-text);
+  position:absolute;
+  left:0; top:0;
+  width:100%;
+  opacity:0.8;
+  clip-path: rect(0,900px,0,0);
+}
+.glitch::before{
+  left:2px;
+  text-shadow: -6px 0 var(--accent1);
+  animation: glitchTop 2.3s infinite linear;
+}
+.glitch::after{
+  left:-2px;
+  text-shadow: 6px 0 var(--accent2);
+  animation: glitchBot 2.7s infinite linear;
+}
+@keyframes glitchTop {
+  0%{clip-path: inset(0 0 80% 0)}
+  10%{clip-path: inset(0 0 40% 0)}
+  20%{clip-path: inset(10% 0 60% 0)}
+  30%{clip-path: inset(0 0 75% 0)}
+  100%{clip-path: inset(0 0 80% 0)}
+}
+@keyframes glitchBot {
+  0%{clip-path: inset(50% 0 0 0)}
+  10%{clip-path: inset(30% 0 0 0)}
+  20%{clip-path: inset(55% 0 0 0)}
+  30%{clip-path: inset(40% 0 0 0)}
+  100%{clip-path: inset(50% 0 0 0)}
+}
+.sub{
+  margin-top:10px;
+  color:var(--muted);
+  font-size:18px;
+}
+
+/* center card for stream input */
+.center-card{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding: 3rem 1rem;
+}
+.glass{
+  width:100%;
+  max-width:760px;
+  padding:1.8rem;
+  border-radius:14px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border: 1px solid rgba(255,255,255,0.05);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+  text-align:center;
+}
+.glass h2{ margin:0 0 0.5rem; font-size:1.6rem }
+.glass input{
+  width:calc(100% - 24px);
+  max-width:700px;
+  padding:12px;
+  margin-top:10px;
+  border-radius:10px;
+  border: none;
+  background: rgba(255,255,255,0.02);
+  color: #e9f5ff;
+  outline: none;
+  font-size: 14px;
+}
+.row{ margin-top:14px; display:flex; gap:10px; justify-content:center; align-items:center; flex-wrap:wrap }
+button.primary{
+  background: linear-gradient(90deg, var(--accent1), var(--accent2));
+  color:#05060a;
+  border:none;
+  padding:10px 18px;
+  border-radius:10px;
+  cursor:pointer;
+  font-weight:700;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.6);
+}
+button.ghost{
+  background: transparent;
+  border:1px solid rgba(255,255,255,0.06);
+  color:var(--muted);
+  padding:10px 14px;
+  border-radius:10px;
+  cursor:pointer;
+}
+.hint{ margin-top:10px; color:var(--muted); font-size:13px }
+
+/* Player */
+.player-section{
+  width:100%;
+  padding: 2rem 1rem 4rem;
+  display:flex;
+  justify-content:center;
+}
+.acm-player-shell{
+  width:100%;
+  max-width:1100px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border-radius:12px;
+  padding:14px;
+  border:1px solid rgba(255,255,255,0.04);
+  box-shadow: 0 15px 40px rgba(2,6,23,0.6);
+}
+.player-top{ display:flex; justify-content:space-between; align-items:center; gap:14px; margin-bottom:12px }
+.player-title{ font-weight:700; font-size:1.1rem; color:#fff }
+.player-actions .btn{ background:transparent; border:1px solid rgba(255,255,255,0.06); color:var(--muted); padding:6px 10px; border-radius:8px; cursor:pointer }
+
+.player-stage{ position:relative; background:#000; border-radius:8px; overflow:hidden; min-height:420px; display:flex; justify-content:center; align-items:center }
+.acm-video{ width:100%; height:100%; max-height:70vh; object-fit:contain; background:#000; display:block }
+.buffer-indicator{ position:absolute; inset:auto auto 20px 20px; background:rgba(0,0,0,0.6); color:#fff; padding:6px 10px; border-radius:8px; font-size:13px }
+
+/* controls */
+.player-controls{ display:flex; gap:14px; align-items:center; margin-top:12px; flex-wrap:wrap; justify-content:space-between }
+.control-btn{ padding:8px 12px; border-radius:8px; border:none; background:rgba(255,255,255,0.03); color:#fff; cursor:pointer }
+.time{ display:flex; gap:8px; align-items:center; flex:1; min-width:200px }
+.time input[type="range"]{ flex:1 }
+.volume-area{ display:flex; gap:8px; align-items:center }
+.audio-select{ display:flex; gap:8px; align-items:center }
+.player-error{ margin-top:10px; color:#ffb0b0 }
+
+/* footer */
+.site-footer{ text-align:center; padding:18px 8px; color:var(--muted); font-size:13px }
+
+/* responsive */
+@media (max-width:720px){
+  .glass input{ width:100% }
+  .player-controls{ flex-direction:column; align-items:flex-start }
+  .player-stage{ min-height:260px }
+}
 /* Player extra UI styles (ACM Player features) */
 .acm-player-shell { margin: 0 auto; box-sizing: border-box; }
 .player-top { display:flex; justify-content:space-between; align-items:center; gap:12px; }
